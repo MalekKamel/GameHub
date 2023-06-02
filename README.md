@@ -296,60 +296,60 @@ patterns allow to create a layer of abstraction between the app code and the thi
 only interacts with a simplified interface. This can make it easier to change or replace the underlying library without
 affecting the rest of your code.
 
-> As an example, I have implemented an interface for reporting messages to the user in our app. The **Reportable**
-> protocol
-> defines the contract for reporting messages, and it depends on the SwiftMessages library for displaying the messages.
-> By using this interface, we can easily swap out the SwiftMessages library with another library that provides the same
-> functionality, without affecting the app code. This is because the interface remains the same, and only the underlying
-> implementation needs to be changed.
+As an example, I have implemented an interface for reporting messages to the user in our app. The **Reportable**
+protocol
+defines the contract for reporting messages, and it depends on the SwiftMessages library for displaying the messages.
+By using this interface, we can easily swap out the SwiftMessages library with another library that provides the same
+functionality, without affecting the app code. This is because the interface remains the same, and only the underlying
+implementation needs to be changed.
 
 # Dependencies
 
 * [SwiftUINavigator](https://github.com/Open-Bytes/SwiftUINavigator) (My own library)
 
-> SwiftUINavigator is an on-the-fly approach for handling navigation in SwiftUI. It provides a familiar way of handling
-> navigation similar to UIKit, where you can push or present a view controller without the need to declare links or
-> local
-> state variables. This approach is more flexible and allows for dynamic navigation, making it easier to build more
-> complex navigation flows in your SwiftUI app. Unlike traditional navigation patterns in SwiftUI, SwiftUINavigator
-> offers
-> a more intuitive and straightforward way of managing your app's navigation hierarchy.
+SwiftUINavigator is an on-the-fly approach for handling navigation in SwiftUI. It provides a familiar way of handling
+navigation similar to UIKit, where you can push or present a view controller without the need to declare links or
+local
+state variables. This approach is more flexible and allows for dynamic navigation, making it easier to build more
+complex navigation flows in your SwiftUI app. Unlike traditional navigation patterns in SwiftUI, SwiftUINavigator
+offers
+a more intuitive and straightforward way of managing your app's navigation hierarchy.
 
 * [SwiftMessages](https://github.com/SwiftKickMobile/SwiftMessages)
 
-> SwiftMessages is a very flexible view and view controller presentation library for iOS.
-> Message views and view controllers can be displayed at the top, bottom, or center of the screen, or behind navigation
-> bars and tab bars. There are interactive dismiss gestures including a fun, physics-based one. Multiple background
-> dimming modes. And a lot more!
+SwiftMessages is a very flexible view and view controller presentation library for iOS.
+Message views and view controllers can be displayed at the top, bottom, or center of the screen, or behind navigation
+bars and tab bars. There are interactive dismiss gestures including a fun, physics-based one. Multiple background
+dimming modes. And a lot more!
 
 * [Moya](https://github.com/Moya/Moya.git)
 
-> You're a smart developer. You probably use Alamofire to abstract away access to URLSession and all those nasty details
-> you don't really care about. But then, like lots of smart developers, you write ad hoc network abstraction layers.
-> They are probably called "APIManager" or "NetworkModel", and they always end in tears.
+You're a smart developer. You probably use Alamofire to abstract away access to URLSession and all those nasty details
+you don't really care about. But then, like lots of smart developers, you write ad hoc network abstraction layers.
+They are probably called "APIManager" or "NetworkModel", and they always end in tears.
 
 * [Cache](https://github.com/hyperoslo/Cache.git)
 
-> Cache doesn't claim to be unique in this area, but it's not another monster library that gives you a god's power. It
-> does nothing but caching, but it does it well. It offers a good public API with out-of-box implementations and great
-> customization possibilities. Cache utilizes Codable in Swift 4 to perform serialization.
+Cache doesn't claim to be unique in this area, but it's not another monster library that gives you a god's power. It
+does nothing but caching, but it does it well. It offers a good public API with out-of-box implementations and great
+customization possibilities. Cache utilizes Codable in Swift 4 to perform serialization.
 
 * [SwiftGen](https://github.com/SwiftGen/SwiftGen)
 
-> SwiftGen is a tool to automatically generate Swift code for resources of your projects (like images, localised
-> strings, etc), to make them type-safe to use.
+SwiftGen is a tool to automatically generate Swift code for resources of your projects (like images, localised
+strings, etc), to make them type-safe to use.
 
 * [Kingfisher](https://github.com/onevcat/Kingfisher.git)
 
-> Kingfisher is a powerful, pure-Swift library for downloading and caching images from the web. It provides you a chance
-> to use a pure-Swift way to work with remote images in your next app.
+Kingfisher is a powerful, pure-Swift library for downloading and caching images from the web. It provides you a chance
+to use a pure-Swift way to work with remote images in your next app.
 
 * [IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager.git)
 
-> While developing iOS apps, we often run into issues where the iPhone keyboard slides up and covers the
-> UITextField/UITextView. IQKeyboardManager allows you to prevent this issue of keyboard sliding up and covering
-> UITextField/UITextView without needing you to write any code or make any additional setup. To use IQKeyboardManager
-> you simply need to add source files to your project.
+While developing iOS apps, we often run into issues where the iPhone keyboard slides up and covers the
+UITextField/UITextView. IQKeyboardManager allows you to prevent this issue of keyboard sliding up and covering
+UITextField/UITextView without needing you to write any code or make any additional setup. To use IQKeyboardManager
+you simply need to add source files to your project.
 
 # Unit Tests
 
