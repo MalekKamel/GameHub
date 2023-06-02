@@ -305,7 +305,7 @@ implementation needs to be changed.
 
 # Dependencies
 
-* [SwiftUINavigator](https://github.com/Open-Bytes/SwiftUINavigator) (My own library)
+## [SwiftUINavigator](https://github.com/Open-Bytes/SwiftUINavigator) (My own library)
 
 SwiftUINavigator is an on-the-fly approach for handling navigation in SwiftUI. It provides a familiar way of handling
 navigation similar to UIKit, where you can push or present a view controller without the need to declare links or
@@ -315,36 +315,36 @@ complex navigation flows in your SwiftUI app. Unlike traditional navigation patt
 offers
 a more intuitive and straightforward way of managing your app's navigation hierarchy.
 
-* [SwiftMessages](https://github.com/SwiftKickMobile/SwiftMessages)
+## [SwiftMessages](https://github.com/SwiftKickMobile/SwiftMessages)
 
 SwiftMessages is a very flexible view and view controller presentation library for iOS.
 Message views and view controllers can be displayed at the top, bottom, or center of the screen, or behind navigation
 bars and tab bars. There are interactive dismiss gestures including a fun, physics-based one. Multiple background
 dimming modes. And a lot more!
 
-* [Moya](https://github.com/Moya/Moya.git)
+## [Moya](https://github.com/Moya/Moya.git)
 
 You're a smart developer. You probably use Alamofire to abstract away access to URLSession and all those nasty details
 you don't really care about. But then, like lots of smart developers, you write ad hoc network abstraction layers.
 They are probably called "APIManager" or "NetworkModel", and they always end in tears.
 
-* [Cache](https://github.com/hyperoslo/Cache.git)
+## [Cache](https://github.com/hyperoslo/Cache.git)
 
 Cache doesn't claim to be unique in this area, but it's not another monster library that gives you a god's power. It
 does nothing but caching, but it does it well. It offers a good public API with out-of-box implementations and great
 customization possibilities. Cache utilizes Codable in Swift 4 to perform serialization.
 
-* [SwiftGen](https://github.com/SwiftGen/SwiftGen)
+## [SwiftGen](https://github.com/SwiftGen/SwiftGen)
 
 SwiftGen is a tool to automatically generate Swift code for resources of your projects (like images, localised
 strings, etc), to make them type-safe to use.
 
-* [Kingfisher](https://github.com/onevcat/Kingfisher.git)
+## [Kingfisher](https://github.com/onevcat/Kingfisher.git)
 
 Kingfisher is a powerful, pure-Swift library for downloading and caching images from the web. It provides you a chance
 to use a pure-Swift way to work with remote images in your next app.
 
-* [IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager.git)
+## [IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager.git)
 
 While developing iOS apps, we often run into issues where the iPhone keyboard slides up and covers the
 UITextField/UITextView. IQKeyboardManager allows you to prevent this issue of keyboard sliding up and covering
