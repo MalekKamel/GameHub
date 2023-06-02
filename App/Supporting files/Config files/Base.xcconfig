@@ -1,0 +1,15 @@
+//
+//  Base.xcconfig
+//
+//  Created by Kamel on on 22/12/2022.
+//  Copyright © 2022 sha. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+APP_NAME = GameHub
+
+BASE_BUNDLE_IDENTIFIER = com.game.hub
+
+PRODUCT_BUNDLE_IDENTIFIER = $(BASE_BUNDLE_IDENTIFIER)
