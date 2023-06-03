@@ -32,6 +32,13 @@ struct GameItem: Identifiable {
     let tags: [Genre]
     let esrbRating: EsrbRating
     let shortScreenshots: [ShortScreenshot]
+
+    var genresDescription: String {
+        genres.map {
+                    $0.name
+                }
+                .joined(separator: ", ")
+    }
 }
 
 struct GameItemsResponse {

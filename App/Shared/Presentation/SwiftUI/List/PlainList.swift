@@ -50,7 +50,7 @@ public struct PlainList<Content: View, LastItem: View, Item: Identifiable>: View
     }
 
     private func ListView() -> some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             LazyVStack {
                 ForEach(items) { item in
                     content(item)

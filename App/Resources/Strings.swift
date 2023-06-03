@@ -23,7 +23,7 @@ public enum Strings {
   public static var done: String { Strings.tr("Localizable", "done") }
   /// Favorites
   public static var favorites: String { Strings.tr("Localizable", "favorites") }
-  /// Find Next Game
+  /// Find your next game
   public static var findNextGame: String { Strings.tr("Localizable", "find_next_game") }
   /// Games
   public static var games: String { Strings.tr("Localizable", "games") }

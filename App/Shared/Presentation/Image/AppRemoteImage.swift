@@ -23,3 +23,10 @@ public struct AppImage: View {
                 }
     }
 }
+
+extension AppRemoteImage {
+
+    init(url: String?) {
+        self.init(URL(string: url ?? ""))
+    }
+}

@@ -9,19 +9,19 @@ struct HomeScreen: AppScreen {
     @EnvironmentObject var navigator: Navigator
 
     var bodyContent: some View {
-        VStack(alignment: .center) {
+        VStack(alignment: .center, spacing: 16) {
             SearchFieldView()
             GamesView()
                     .infiniteHeight()
         }
+                .padding(.horizontal, 22)
     }
 
     private func SearchFieldView() -> some View {
         SearchField(
-                title: "",
+                title: Strings.findNextGame,
                 text: $vm.search
         )
-                .padding(.horizontal, 22)
     }
 
     private func GamesView() -> some View {
@@ -40,7 +40,7 @@ struct HomeScreen: AppScreen {
     }
 
     private func ItemView(item: GameItem) -> some View {
-        Text(item.name)
+        GameItemView(item: item)
     }
 
     private func ItemsPlaceholderView() -> some View {
