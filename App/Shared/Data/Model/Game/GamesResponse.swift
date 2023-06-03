@@ -35,7 +35,7 @@ struct GamesResponse: Codable {
 struct GameItemResponse: Codable {
     let id: Int
     let name: String
-    let backgroundImage: String
+    let backgroundImage: String?
     let metacritic: Int?
     let genres: [Genre]
 

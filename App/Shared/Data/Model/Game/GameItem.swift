@@ -61,7 +61,7 @@ struct GameItemMapper {
         GameItem(
                 id: input.id,
                 name: input.name,
-                backgroundImage: input.backgroundImage,
+                backgroundImage: input.backgroundImage ?? "",
                 metacritic: input.metacritic ?? 0,
                 genres: input.genres,
                 response: input
