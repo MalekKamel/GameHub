@@ -13,12 +13,11 @@ struct SplashScreen: AppScreen {
             VStack(alignment: .center) {
                 Assets.bgApp.swiftUiImage
                         .resizable()
-                        .frame(width: 200, height: 200)
+                        .frame(width: 150, height: 150)
                 Spacer().frame(height: 32)
                 Text(Strings.discoverYourNextFavoriteGame)
                         .foregroundColor(AppColor.primary3)
                         .appFont(size: 16)
-
             }
                     .infiniteSize()
         }
@@ -31,7 +30,7 @@ struct SplashScreen: AppScreen {
     private func handleFlow() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             navigator.navigate {
-                HomeScreen.build()
+                MainScreen.build()
             }
         }
     }

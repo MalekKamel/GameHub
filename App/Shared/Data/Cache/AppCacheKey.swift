@@ -5,6 +5,7 @@
 import Foundation
 
 public enum AppCacheKey: Hashable {
+    case games
     case custom(String)
 
     public func hash(into hasher: inout Hasher) {
@@ -13,6 +14,8 @@ public enum AppCacheKey: Hashable {
 
     var key: String {
         switch self {
+        case .games:
+            return "games.response"
         case .custom(let value):
             return value
         }

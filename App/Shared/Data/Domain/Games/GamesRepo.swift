@@ -6,15 +6,16 @@
 import Foundation
 
 protocol GamesRepoContract {
+    func games(request: GamesRequest) async throws
 }
 
-public struct GamesRepo: GamesRepoContract {
+struct GamesRepo: GamesRepoContract {
     static let shared = GamesRepo.build()
     private let remote: GamesRemoteDataSrcContract
     private let local: GamesLocalDataSrcContract
     private let userDefaults: AppUserDefaultsContract
 
-    public init(
+    init(
             remote: GamesRemoteDataSrcContract,
             local: GamesLocalDataSrcContract,
             userDefaults: AppUserDefaultsContract) {
@@ -23,6 +24,14 @@ public struct GamesRepo: GamesRepoContract {
         self.userDefaults = userDefaults
     }
 
+    func games(request: GamesRequest) async throws {
+        let localItems = try await local.games()
+        if localItems != nil, localItems?.results?.isEmpty == false {
+            return
+        }
+        let response = try await remote.games(request: request)
+        try await local.cache(games: response)
+    }
 }
 
 extension GamesRepo {

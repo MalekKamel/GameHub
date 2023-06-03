@@ -16,6 +16,6 @@ BASE_BUNDLE_IDENTIFIER = $(inherited).testing
 
 ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon.testing
 
-API_BASE_URL = https:/$()/api.rawg.io/api/games
+API_BASE_URL = https:/$()/api.rawg.io/api
 
 API_KEY = 3be8af6ebf124ffe81d90f514e59856c

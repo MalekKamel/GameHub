@@ -143,7 +143,9 @@ public extension CacheManager {
         // Send the current value to the closure
         Task {
             if let currentValue: T = await get(key) {
-                closure(currentValue)
+                onMainThread {
+                    closure(currentValue)
+                }
             }
         }
 

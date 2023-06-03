@@ -12,12 +12,16 @@ extension MoyaProvider {
     static func create<Target: TargetType>() -> MoyaProvider<Target> {
         var config = NetworkLoggerPlugin.Configuration()
 
-        // Log Options
-        config.logOptions = NetworkLoggerPlugin.Configuration.LogOptions.verbose
+        let options: NetworkLoggerPlugin.Configuration.LogOptions = [
+            .requestMethod,
+            .requestHeaders,
+            .requestBody,
+            .successResponseBody,
+            .errorResponseBody,
+            .formatRequestAscURL]
+        config.logOptions = options
 
-        // Formatter
         config.formatter = NetworkLoggerPlugin.Configuration.Formatter(responseData: jsonResponseDataFormatter)
-
         let logger = NetworkLoggerPlugin(configuration: config)
 
         return MoyaProvider<Target>(session: DefaultAlamofireSession.shared, plugins: [logger])

@@ -5,14 +5,22 @@
 
 import Foundation
 
-public protocol GamesRemoteDataSrcContract {
+protocol GamesRemoteDataSrcContract {
+    func games(request: GamesRequest) async throws -> GamesResponse
 }
 
-public struct GamesRemoteDataSrc: GamesRemoteDataSrcContract {
+struct GamesRemoteDataSrc: GamesRemoteDataSrcContract {
     private let api: GamesApiProvider
 
     init(api: GamesApiProvider) {
         self.api = api
     }
 
+    func games(request: GamesRequest) async throws -> GamesResponse {
+        try await api.request(target: .games(request))
+    }
+
+    func cache(games: GamesResponse) async throws {
+
+    }
 }

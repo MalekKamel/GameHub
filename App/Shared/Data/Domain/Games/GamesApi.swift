@@ -9,19 +9,46 @@ import Foundation
 typealias GamesApiProvider = MoyaProvider<GamesApi>
 
 enum GamesApi {
+    case games(GamesRequest)
 }
 
 extension GamesApi: MoyaTargetType {
 
     public var path: String {
-       ""
+        switch self {
+        case .games(let request):
+            switch request {
+            case .initial:
+                return "games"
+            case .next(let page):
+                return page
+            }
+        }
     }
 
     public var method: Moya.Method {
-        .get
+        switch self {
+        case .games:
+            return .get
+        }
     }
 
     public var task: Task {
-        .requestPlain
+        switch self {
+        case .games(let request):
+            switch request {
+            case let .initial(pageSize, search):
+                var params = [
+                    "page_size": pageSize.toString,
+                    "key": AppPList.value(of: .gamesKey)
+                ]
+                if !search.isEmpty {
+                    params["search"] = search
+                }
+                return .requestParameters(parameters: params, encoding: URLEncoding.default)
+            case .next:
+                return .requestPlain
+            }
+        }
     }
 }

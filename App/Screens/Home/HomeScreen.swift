@@ -10,10 +10,59 @@ struct HomeScreen: AppScreen {
 
     var bodyContent: some View {
         VStack(alignment: .center) {
-            Text("Home")
+            SearchFieldView()
+            GamesView()
+                    .infiniteHeight()
         }
     }
 
+    private func SearchFieldView() -> some View {
+        SearchField(
+                title: "",
+                text: $vm.search
+        )
+                .padding(.horizontal, 22)
+    }
+
+    private func GamesView() -> some View {
+        PagedList(
+                vm.gamesState,
+                hasMoreItems: vm.canLoadNextPage,
+                loadMore: {
+
+                },
+                emptyContent: {
+                    ItemsPlaceholderView()
+                }
+        ) { item in
+            ItemView(item: item)
+        }
+    }
+
+    private func ItemView(item: GameItem) -> some View {
+        Text(item.name)
+    }
+
+    private func ItemsPlaceholderView() -> some View {
+        VStack(alignment: .center) {
+            Assets.bgApp.swiftUiImage
+                    .resizable()
+                    .frame(width: 150, height: 150)
+            Spacer().frame(height: 32)
+            Text(Strings.doNotGiveUpTheNextGameIsHere)
+                    .foregroundColor(AppColor.primary3)
+                    .appFont(size: 16)
+        }
+                .infiniteHeight()
+    }
+
+}
+
+extension HomeScreen {
+
+    func onAppear() {
+        vm.loadGames()
+    }
 }
 
 extension HomeScreen {

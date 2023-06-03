@@ -6,6 +6,6 @@ import Foundation
 
 public enum BuildConfigName: String {
     case baseUrl = "API_BASE_URL"
-    case openExchangeAppId = "API_KEY"
+    case gamesKey = "API_KEY"
     case bundleShortVersionString = "CFBundleShortVersionString"
 }

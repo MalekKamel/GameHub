@@ -17,8 +17,16 @@ public enum Strings {
   public static var cancel: String { Strings.tr("Localizable", "cancel") }
   /// Discover Your Next Favorite Game
   public static var discoverYourNextFavoriteGame: String { Strings.tr("Localizable", "discover_your_next_favorite_game") }
+  /// Don't give up! The next game is here.
+  public static var doNotGiveUpTheNextGameIsHere: String { Strings.tr("Localizable", "do_not_give_up_the_next_game_is_here") }
   /// Done
   public static var done: String { Strings.tr("Localizable", "done") }
+  /// Favorites
+  public static var favorites: String { Strings.tr("Localizable", "favorites") }
+  /// Find Next Game
+  public static var findNextGame: String { Strings.tr("Localizable", "find_next_game") }
+  /// Games
+  public static var games: String { Strings.tr("Localizable", "games") }
   /// No internet connection!
   public static var noInternetConnection: String { Strings.tr("Localizable", "no_internet_connection") }
   /// This field is required

@@ -5,14 +5,23 @@
 
 import Foundation
 
-public protocol GamesLocalDataSrcContract {
+protocol GamesLocalDataSrcContract {
+    func games() async throws -> GamesResponse?
+    func cache(games: GamesResponse) async throws
 }
 
-public struct GamesLocalDataSrc: GamesLocalDataSrcContract {
+struct GamesLocalDataSrc: GamesLocalDataSrcContract {
     private let cacheManager: CacheManagerContract
 
     public init(cacheManager: CacheManagerContract = AppCacheManager.shared) {
         self.cacheManager = cacheManager
     }
 
+    func games() async throws -> GamesResponse? {
+        await cacheManager.get(.games)
+    }
+
+    func cache(games: GamesResponse) async throws {
+        try await cacheManager.save(games, .games, expiry: nil)
+    }
 }

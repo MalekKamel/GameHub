@@ -106,6 +106,9 @@ public enum AppSystemImage: String {
     case musicNote = "music.note"
     case powerSleep = "powersleep"
     case gear = "gear"
+    case heartCircleFill = "heart.circle.fill"
+    case heartFill = "heart.fill"
+    case gameControllerFill = "gamecontroller.fill"
 }
 
 public extension Image {
