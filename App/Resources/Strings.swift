@@ -31,6 +31,10 @@ public enum Strings {
   public static var noInternetConnection: String { Strings.tr("Localizable", "no_internet_connection") }
   /// This field is required
   public static var `required`: String { Strings.tr("Localizable", "required") }
+  /// You've successfully added this item to your list of favorites.
+  public static var youHaveSuccessfullyAddedThisItemToYourListOfFavorites: String { Strings.tr("Localizable", "you_have_successfully_added_this_item_to_your_list_of_favorites") }
+  /// You've successfully removed this item from your list of favorites.
+  public static var youHaveSuccessfullyRemovedThisItemFromYourListOfFavorites: String { Strings.tr("Localizable", "you_have_successfully_removed_this_item_from_your_list_of_favorites") }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

@@ -92,5 +92,17 @@ class HomeVM: AppViewModel {
         }
     }
 
+    func updateFavorite(item: GameItemResponse, completion: @escaping (Bool) -> Void) {
+        request { [weak self] in
+            guard let self else {
+                return
+            }
+
+            let isAdded = try await self.gamesRepo.updateFavorite(item: item)
+            onMainThread {
+                completion(isAdded)
+            }
+        }
+    }
 
 }

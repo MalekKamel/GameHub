@@ -22,7 +22,7 @@ struct HomeScreen: AppScreen {
                 title: Strings.findNextGame,
                 text: $vm.search
         ) {
-            vm.searchGames()
+            searchGames()
         }
     }
 
@@ -42,7 +42,9 @@ struct HomeScreen: AppScreen {
     }
 
     private func ItemView(item: GameItem) -> some View {
-        GameItemView(item: item)
+        GameItemView(item: item) { item in
+            updateFavorite(item: item)
+        }
     }
 
     private func ItemsPlaceholderView() -> some View {
@@ -56,6 +58,27 @@ struct HomeScreen: AppScreen {
                     .appFont(size: 16)
         }
                 .infiniteHeight()
+    }
+
+}
+
+extension HomeScreen {
+
+    private func updateFavorite(item: GameItem) {
+        vm.updateFavorite(item: item.response) { isAdded in
+            let message = isAdded ?
+                    Strings.youHaveSuccessfullyAddedThisItemToYourListOfFavorites :
+                    Strings.youHaveSuccessfullyRemovedThisItemFromYourListOfFavorites
+            showSuccess(message: message)
+        }
+    }
+
+}
+
+extension HomeScreen {
+
+    private func searchGames() {
+        vm.searchGames()
     }
 
 }

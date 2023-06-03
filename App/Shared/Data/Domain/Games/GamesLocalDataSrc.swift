@@ -10,6 +10,8 @@ protocol GamesLocalDataSrcContract {
     func games() async throws -> [GameItemResponse]
     func cache(gamesResponse: GamesResponse) async throws
     func clearCache() async throws
+    func updateFavorite(item: GameItemResponse) async throws -> Bool
+    func favorites() async throws -> [GameItemResponse]
 }
 
 struct GamesLocalDataSrc: GamesLocalDataSrcContract {
@@ -35,5 +37,27 @@ struct GamesLocalDataSrc: GamesLocalDataSrcContract {
     func clearCache() async throws {
         await cacheManager.remove(.games)
         await cacheManager.remove(.gamesResponse)
+    }
+
+    func updateFavorite(item: GameItemResponse) async throws -> Bool {
+        let items: [GameItemResponse] = await cacheManager.array(.favoriteGames)
+        let isFavorite = items.contains {
+            $0.id == item.id
+        }
+
+        guard !isFavorite else {
+            let updated = items.filter {
+                $0.id != item.id
+            }
+            try await cacheManager.save(updated, .favoriteGames, expiry: nil)
+            return false
+        }
+
+        try await cacheManager.append(item, .favoriteGames)
+        return true
+    }
+
+    func favorites() async throws -> [GameItemResponse] {
+        await cacheManager.array(.favoriteGames)
     }
 }

@@ -57,6 +57,10 @@ class CacheManagerMock: CacheManagerContract {
         updateCalled = true
     }
 
+    func append<T: Codable>(_ object: T, _ key: AppCacheKey) async throws {
+        appendCalled = true
+    }
+
     func append<T: Codable>(_ objects: [T], _ key: AppCacheKey) async throws {
         appendCalled = true
     }

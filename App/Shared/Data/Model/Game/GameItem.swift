@@ -10,6 +10,7 @@ struct GameItem: Identifiable {
     let backgroundImage: String
     let metacritic: Int
     let genres: [Genre]
+    let response: GameItemResponse
 
     var genresDescription: String {
         genres.map {
@@ -62,7 +63,8 @@ struct GameItemMapper {
                 name: input.name,
                 backgroundImage: input.backgroundImage,
                 metacritic: input.metacritic ?? 0,
-                genres: input.genres
+                genres: input.genres,
+                response: input
         )
     }
 

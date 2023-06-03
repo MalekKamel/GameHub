@@ -6,6 +6,7 @@ import SwiftUI
 
 struct GameItemView: View {
     let item: GameItem
+    let onAddToFavorites: (GameItem) -> Void
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -22,9 +23,7 @@ struct GameItemView: View {
                 .cornerRadius(5)
                 .overlay(
                         FavoriteView()
-                                .padding([.top, .trailing], 5)
-                        , alignment: .topTrailing
-                )
+                                .padding([.top, .trailing], 5), alignment: .topTrailing)
     }
 
     private func DescriptionView() -> some View {
@@ -44,6 +43,7 @@ struct GameItemView: View {
 
     private func FavoriteView() -> some View {
         Button(action: {
+            onAddToFavorites(item)
         }) {
             Image(systemName: .heartFill)
                     .foregroundColor(.gray)

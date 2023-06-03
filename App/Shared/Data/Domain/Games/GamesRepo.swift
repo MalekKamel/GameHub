@@ -8,6 +8,8 @@ import Foundation
 protocol GamesRepoContract {
     func games(request: GamesRequest) async throws -> GamesResponse?
     func clearCache() async throws
+    func updateFavorite(item: GameItemResponse) async throws -> Bool
+    func favorites() async throws -> [GameItemResponse]
 }
 
 struct GamesRepo: GamesRepoContract {
@@ -42,6 +44,14 @@ struct GamesRepo: GamesRepoContract {
 
     func clearCache() async throws {
         try await local.clearCache()
+    }
+
+    func updateFavorite(item: GameItemResponse) async throws -> Bool {
+        try await local.updateFavorite(item: item)
+    }
+
+    func favorites() async throws -> [GameItemResponse] {
+        try await local.favorites()
     }
 
 }

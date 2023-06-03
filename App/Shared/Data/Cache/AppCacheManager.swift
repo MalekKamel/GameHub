@@ -39,6 +39,8 @@ public protocol CacheManagerContract {
 
     func append<T: Codable>(_ objects: [T], _ key: AppCacheKey) async throws
 
+    func append<T: Codable>(_ object: T, _ key: AppCacheKey) async throws
+
     func replace<T: Codable>(_ objects: [T], _ key: AppCacheKey) async throws
 
     func clearExpired(completion: @escaping (Error?) -> Void)
@@ -223,6 +225,10 @@ public extension CacheManager {
         }
     }
 
+    func append<T: Codable>(_ object: T, _ key: AppCacheKey) async throws {
+        try await append([object], key)
+    }
+
     func append<T: Codable>(_ objects: [T], _ key: AppCacheKey) async throws {
         guard !objects.isEmpty else {
             return
@@ -255,7 +261,7 @@ public extension CacheManager {
 
 public extension CacheManager {
 
-     func clearExpired(completion: @escaping (Error?) -> Void) {
+    func clearExpired(completion: @escaping (Error?) -> Void) {
         guard let cache = storage else {
             return
         }
