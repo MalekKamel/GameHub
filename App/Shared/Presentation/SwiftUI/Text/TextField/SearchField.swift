@@ -10,16 +10,20 @@ public struct SearchField: View {
     @Binding private var text: String
     private let backgroundColor: Color
     private let hasSpecialCharacters: Bool
+    private let onCommit: () -> ()
 
     public init(
             title: String,
             text: Binding<String>,
             backgroundColor: Color = AppColor.gray2,
-            hasSpecialCharacters: Bool = true) {
+            hasSpecialCharacters: Bool = true,
+            onCommit: @escaping () -> Void = {
+            }) {
         self.title = title
         _text = text
         self.backgroundColor = backgroundColor
         self.hasSpecialCharacters = hasSpecialCharacters
+        self.onCommit = onCommit
     }
 
     public var body: some View {
@@ -28,6 +32,7 @@ public struct SearchField: View {
                 text: $text,
                 backgroundColor: backgroundColor,
                 hasSpecialCharacters: hasSpecialCharacters,
+                onCommit: onCommit,
                 leadingView: {
                     Image(systemName: .magnifyingGlass)
                             .resizable()

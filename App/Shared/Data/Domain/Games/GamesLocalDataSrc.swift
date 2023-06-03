@@ -9,6 +9,7 @@ protocol GamesLocalDataSrcContract {
     func lastGameResponse() async throws -> GamesResponse?
     func games() async throws -> [GameItemResponse]
     func cache(gamesResponse: GamesResponse) async throws
+    func clearCache() async throws
 }
 
 struct GamesLocalDataSrc: GamesLocalDataSrcContract {
@@ -29,5 +30,10 @@ struct GamesLocalDataSrc: GamesLocalDataSrcContract {
     func cache(gamesResponse: GamesResponse) async throws {
         try await cacheManager.save(gamesResponse, .gamesResponse, expiry: nil)
         try await cacheManager.append(gamesResponse.results ?? [], .games)
+    }
+
+    func clearCache() async throws {
+        await cacheManager.remove(.games)
+        await cacheManager.remove(.gamesResponse)
     }
 }

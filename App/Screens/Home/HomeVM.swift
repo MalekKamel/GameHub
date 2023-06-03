@@ -54,6 +54,21 @@ class HomeVM: AppViewModel {
                 .dispose(with: cacheBag)
     }
 
+    func searchGames() {
+        let key = search.trimmingCharacters(in: .whitespaces)
+        guard !key.isEmpty else {
+            return
+        }
+
+        request { [weak self] in
+            guard let self else {
+                return
+            }
+            try await self.gamesRepo.clearCache()
+            self.loadGames(request: .initial(search: key))
+        }
+    }
+
     func loadGames() {
         loadGames(request: .initial())
     }

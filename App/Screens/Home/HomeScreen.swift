@@ -21,7 +21,9 @@ struct HomeScreen: AppScreen {
         SearchField(
                 title: Strings.findNextGame,
                 text: $vm.search
-        )
+        ) {
+            vm.searchGames()
+        }
     }
 
     private func GamesView() -> some View {

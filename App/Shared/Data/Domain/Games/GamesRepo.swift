@@ -7,6 +7,7 @@ import Foundation
 
 protocol GamesRepoContract {
     func games(request: GamesRequest) async throws -> GamesResponse?
+    func clearCache() async throws
 }
 
 struct GamesRepo: GamesRepoContract {
@@ -38,6 +39,11 @@ struct GamesRepo: GamesRepoContract {
         try await local.cache(gamesResponse: response)
         return response
     }
+
+    func clearCache() async throws {
+        try await local.clearCache()
+    }
+
 }
 
 extension GamesRepo {
