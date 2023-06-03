@@ -48,16 +48,7 @@ struct HomeScreen: AppScreen {
     }
 
     private func ItemsPlaceholderView() -> some View {
-        VStack(alignment: .center) {
-            Assets.bgApp.swiftUiImage
-                    .resizable()
-                    .frame(width: 150, height: 150)
-            Spacer().frame(height: 32)
-            Text(Strings.doNotGiveUpTheNextGameIsHere)
-                    .foregroundColor(AppColor.primary3)
-                    .appFont(size: 16)
-        }
-                .infiniteHeight()
+        GamesPlaceholderView(description: Strings.doNotGiveUpTheNextGameIsHere)
     }
 
 }

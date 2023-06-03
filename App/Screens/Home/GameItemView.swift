@@ -1,12 +1,13 @@
 //
-// Created by Shaban on 03/06/2023.
+// Created by Kamel on 03/06/2023.
 //
 
 import SwiftUI
 
 struct GameItemView: View {
     let item: GameItem
-    let onAddToFavorites: (GameItem) -> Void
+    var canFavorite: Bool = true
+    var onUpdateFavorite: ((GameItem) -> Void)? = nil
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -16,14 +17,17 @@ struct GameItemView: View {
     }
 
     private func ImageView() -> some View {
-        AppRemoteImage(url: item.backgroundImage)
-                .resizable()
-                .frame(height: 190)
-                .infiniteWidth()
-                .cornerRadius(5)
-                .overlay(
-                        FavoriteView()
-                                .padding([.top, .trailing], 5), alignment: .topTrailing)
+        ZStack(alignment: .topTrailing) {
+            AppRemoteImage(url: item.backgroundImage)
+                    .resizable()
+                    .frame(height: 190)
+                    .infiniteWidth()
+                    .cornerRadius(5)
+            if canFavorite {
+                FavoriteView()
+                        .padding([.top, .trailing], 5)
+            }
+        }
     }
 
     private func DescriptionView() -> some View {
@@ -43,7 +47,7 @@ struct GameItemView: View {
 
     private func FavoriteView() -> some View {
         Button(action: {
-            onAddToFavorites(item)
+            onUpdateFavorite?(item)
         }) {
             Image(systemName: .heartFill)
                     .foregroundColor(.gray)

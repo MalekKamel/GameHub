@@ -35,6 +35,8 @@ public enum Strings {
   public static var youHaveSuccessfullyAddedThisItemToYourListOfFavorites: String { Strings.tr("Localizable", "you_have_successfully_added_this_item_to_your_list_of_favorites") }
   /// You've successfully removed this item from your list of favorites.
   public static var youHaveSuccessfullyRemovedThisItemFromYourListOfFavorites: String { Strings.tr("Localizable", "you_have_successfully_removed_this_item_from_your_list_of_favorites") }
+  /// Your favorites list is empty at the moment.
+  public static var yourFavoritesListIsEmptyAtTheMoment: String { Strings.tr("Localizable", "your_favorites_list_is_empty_at_the_moment") }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

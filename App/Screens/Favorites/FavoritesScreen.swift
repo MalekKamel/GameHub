@@ -9,9 +9,67 @@ struct FavoritesScreen: AppScreen {
     @EnvironmentObject var navigator: Navigator
 
     var bodyContent: some View {
-        VStack(alignment: .center) {
-            Text("Favorites")
-            Spacer()
+        GamesView()
+    }
+
+    private func GamesView() -> some View {
+        Group {
+            if vm.games.isEmpty {
+                ItemsPlaceholderView()
+                        .infiniteSize()
+            } else {
+                GamesList()
+            }
+        }
+    }
+
+    private func GamesList() -> some View {
+        List {
+            ForEach(vm.games) { item in
+                ItemView(item: item)
+            }
+                    .onDelete(perform: delete)
+        }
+                .listStyle(.plain)
+    }
+
+    private func ItemView(item: GameItem) -> some View {
+        GameItemView(item: item, canFavorite: false)
+    }
+
+    private func ItemsPlaceholderView() -> some View {
+        GamesPlaceholderView(description: Strings.yourFavoritesListIsEmptyAtTheMoment)
+    }
+
+}
+
+extension FavoritesScreen {
+
+    func delete(at offsets: IndexSet) {
+        guard let index = offsets.first else {
+            return
+        }
+        let item = vm.games[index]
+        vm.games.remove(atOffsets: offsets)
+        updateFavorite(item: item)
+    }
+
+}
+
+extension FavoritesScreen {
+
+    func onAppear() {
+        vm.loadGames()
+    }
+
+}
+
+extension FavoritesScreen {
+
+    private func updateFavorite(item: GameItem) {
+        vm.updateFavorite(item: item.response) {
+            let message = Strings.youHaveSuccessfullyRemovedThisItemFromYourListOfFavorites
+            showSuccess(message: message)
         }
     }
 
