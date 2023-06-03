@@ -13,6 +13,9 @@ class CacheManagerMock: CacheManagerContract {
     var saveParameters: (object: Codable, key: AppCacheKey, expiry: Expiry?)?
     var removeCalled = false
     var observeCalled = false
+    var updateCalled = false
+    var appendCalled = false
+    var replaceCalled = false
     var clearExpiredCalled = false
 
     func get<T: Codable>(_ key: AppCacheKey) async -> T? {
@@ -44,6 +47,22 @@ class CacheManagerMock: CacheManagerContract {
     ) -> AppCacheObservationToken? {
         observeCalled = true
         return nil
+    }
+
+    func update<T: Codable>(
+            _ objects: [T],
+            _ key: AppCacheKey,
+            strategy: UpdateCacheStrategy
+    ) async throws {
+        updateCalled = true
+    }
+
+    func append<T: Codable>(_ objects: [T], _ key: AppCacheKey) async throws {
+        appendCalled = true
+    }
+
+    func replace<T: Codable>(_ objects: [T], _ key: AppCacheKey) async throws {
+        replaceCalled = true
     }
 
     func clearExpired(completion: @escaping (Error?) -> Void) {

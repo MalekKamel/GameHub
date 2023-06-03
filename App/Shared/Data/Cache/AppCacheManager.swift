@@ -31,11 +31,20 @@ public protocol CacheManagerContract {
             closure: @escaping (T?) -> Void
     ) -> AppCacheObservationToken?
 
+    func update<T: Codable>(
+            _ objects: [T],
+            _ key: AppCacheKey,
+            strategy: UpdateCacheStrategy
+    ) async throws
+
+    func append<T: Codable>(_ objects: [T], _ key: AppCacheKey) async throws
+
+    func replace<T: Codable>(_ objects: [T], _ key: AppCacheKey) async throws
+
     func clearExpired(completion: @escaping (Error?) -> Void)
 }
 
 public class CacheManager: CacheManagerContract {
-
     public static let shared = CacheManager()
 
     private lazy var storage: AppCacheAsyncStorage? = {
@@ -199,9 +208,54 @@ public extension CacheManager {
     }
 }
 
-extension CacheManager {
+public extension CacheManager {
 
-    public func clearExpired(completion: @escaping (Error?) -> Void) {
+    func update<T: Codable>(
+            _ objects: [T],
+            _ key: AppCacheKey,
+            strategy: UpdateCacheStrategy
+    ) async throws {
+        switch strategy {
+        case .append:
+            try await append(objects, key)
+        case .replace:
+            try await save(objects, key)
+        }
+    }
+
+    func append<T: Codable>(_ objects: [T], _ key: AppCacheKey) async throws {
+        guard !objects.isEmpty else {
+            return
+        }
+        var items: [T] = await get(key) ?? []
+        items.append(contentsOf: objects)
+        guard let cache = storage else {
+            return
+        }
+        let json = try JSONEncoder().encode(items)
+        guard let string = String(data: json, encoding: .utf8) else {
+            AppCrashlytics.record(description: "Caching Failure", failure: "Couldn't cache \(json)")
+            return
+        }
+        return cache.setObject(string, forKey: key) { result in
+            switch result {
+            case .value:
+                break
+            case .error(let error):
+                error.record()
+            }
+        }
+    }
+
+    func replace<T: Codable>(_ objects: [T], _ key: AppCacheKey) async throws {
+        await remove(key)
+        try await append(objects, key)
+    }
+}
+
+public extension CacheManager {
+
+     func clearExpired(completion: @escaping (Error?) -> Void) {
         guard let cache = storage else {
             return
         }

@@ -6,7 +6,7 @@
 import Foundation
 
 protocol GamesRepoContract {
-    func games(request: GamesRequest) async throws
+    func games(request: GamesRequest) async throws -> GamesResponse?
 }
 
 struct GamesRepo: GamesRepoContract {
@@ -24,13 +24,19 @@ struct GamesRepo: GamesRepoContract {
         self.userDefaults = userDefaults
     }
 
-    func games(request: GamesRequest) async throws {
-        let localItems = try await local.games()
-        if localItems != nil, localItems?.results?.isEmpty == false {
-            return
+    func games(request: GamesRequest) async throws -> GamesResponse? {
+        switch request {
+        case .initial:
+            let localItems = try await local.games()
+            guard localItems.isEmpty else {
+                return try await local.lastGameResponse()
+            }
+        case .next:
+            break
         }
         let response = try await remote.games(request: request)
-        try await local.cache(games: response)
+        try await local.cache(gamesResponse: response)
+        return response
     }
 }
 

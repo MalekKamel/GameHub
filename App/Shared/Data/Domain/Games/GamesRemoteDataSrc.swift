@@ -19,8 +19,4 @@ struct GamesRemoteDataSrc: GamesRemoteDataSrcContract {
     func games(request: GamesRequest) async throws -> GamesResponse {
         try await api.request(target: .games(request))
     }
-
-    func cache(games: GamesResponse) async throws {
-
-    }
 }

@@ -35,7 +35,7 @@ struct GameItemView: View {
             Text(item.genresDescription)
                     .appFont(size: 14)
                     .foregroundColor(AppColor.secondaryBlack)
-            Text(String(item.rating))
+            Text(String(item.metacritic))
                     .appFont(size: 14)
                     .foregroundColor(AppColor.secondaryRed)
         }

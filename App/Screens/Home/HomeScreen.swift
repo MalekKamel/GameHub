@@ -29,7 +29,7 @@ struct HomeScreen: AppScreen {
                 vm.gamesState,
                 hasMoreItems: vm.canLoadNextPage,
                 loadMore: {
-
+                    vm.loadNextGames()
                 },
                 emptyContent: {
                     ItemsPlaceholderView()
@@ -61,6 +61,10 @@ struct HomeScreen: AppScreen {
 extension HomeScreen {
 
     func onAppear() {
+        loadGames()
+    }
+
+    private func loadGames() {
         vm.loadGames()
     }
 }

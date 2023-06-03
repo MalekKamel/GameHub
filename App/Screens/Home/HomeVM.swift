@@ -16,6 +16,7 @@ class HomeVM: AppViewModel {
 
     @Published var gamesState: ListLoadingState<GameItem> = .empty
     @Published var canLoadNextPage = true
+    var lastGameResponse: GamesResponse? = nil
 
     init(requester: AsyncManContract = AsyncMan(),
          gamesRepo: GamesRepoContract = GamesRepo.build(),
@@ -37,7 +38,7 @@ class HomeVM: AppViewModel {
     private func observeGames() {
         cacheManager.observe(
                         self,
-                        type: GamesResponse.self,
+                        type: [GameItemResponse].self,
                         key: .games
                 ) { [weak self] value in
                     guard let self = self else {
@@ -47,18 +48,32 @@ class HomeVM: AppViewModel {
                         self.gamesState = .empty
                         return
                     }
-                    let items = GameItemMapper.map(value).results
+                    let items = GameItemMapper.map(value)
                     self.gamesState = ListLoadingState<GameItem>.from(items)
                 }?
                 .dispose(with: cacheBag)
     }
 
     func loadGames() {
-        request { [weak self] in
+        loadGames(request: .initial())
+    }
+
+    func loadNextGames() {
+        guard let next = lastGameResponse?.next else {
+            return
+        }
+        loadGames(request: .next(page: next))
+    }
+
+    func loadGames(request: GamesRequest) {
+        self.request { [weak self] in
             guard let self else {
                 return
             }
-            try await self.gamesRepo.games(request: .initial())
+            let response = try await self.gamesRepo.games(request: request)
+            onMainThread {
+                self.lastGameResponse = response
+            }
         }
     }
 

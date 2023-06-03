@@ -34,61 +34,17 @@ struct GamesResponse: Codable {
 
 struct GameItemResponse: Codable {
     let id: Int
-    let slug: String
     let name: String
-    let released: String
-    let tba: Bool
     let backgroundImage: String
-    let rating: Double
-    let ratingTop: Int
-    let ratings: [Rating]
-    let ratingsCount: Int
-    let reviewsTextCount: Int
-    let added: Int
-    let addedByStatus: AddedByStatus
-    let metacritic: Int
-    let playtime: Int
-    let suggestionsCount: Int
-    let updated: String
-    let reviewsCount: Int
-    let saturatedColor: GameColor
-    let dominantColor: GameColor
-    let platforms: [PlatformItemResponse]
-    let parentPlatforms: [ParentPlatform]
+    let metacritic: Int?
     let genres: [Genre]
-    let stores: [Store]
-    let tags: [Genre]
-    let esrbRating: EsrbRating
-    let shortScreenshots: [ShortScreenshot]
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
-        case slug = "slug"
         case name = "name"
-        case released = "released"
-        case tba = "tba"
         case backgroundImage = "background_image"
-        case rating = "rating"
-        case ratingTop = "rating_top"
-        case ratings = "ratings"
-        case ratingsCount = "ratings_count"
-        case reviewsTextCount = "reviews_text_count"
-        case added = "added"
-        case addedByStatus = "added_by_status"
         case metacritic = "metacritic"
-        case playtime = "playtime"
-        case suggestionsCount = "suggestions_count"
-        case updated = "updated"
-        case reviewsCount = "reviews_count"
-        case saturatedColor = "saturated_color"
-        case dominantColor = "dominant_color"
-        case platforms = "platforms"
-        case parentPlatforms = "parent_platforms"
         case genres = "genres"
-        case stores = "stores"
-        case tags = "tags"
-        case esrbRating = "esrb_rating"
-        case shortScreenshots = "short_screenshots"
     }
 }
 

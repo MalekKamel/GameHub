@@ -6,8 +6,9 @@
 import Foundation
 
 protocol GamesLocalDataSrcContract {
-    func games() async throws -> GamesResponse?
-    func cache(games: GamesResponse) async throws
+    func lastGameResponse() async throws -> GamesResponse?
+    func games() async throws -> [GameItemResponse]
+    func cache(gamesResponse: GamesResponse) async throws
 }
 
 struct GamesLocalDataSrc: GamesLocalDataSrcContract {
@@ -17,11 +18,16 @@ struct GamesLocalDataSrc: GamesLocalDataSrcContract {
         self.cacheManager = cacheManager
     }
 
-    func games() async throws -> GamesResponse? {
-        await cacheManager.get(.games)
+    func lastGameResponse() async throws -> GamesResponse? {
+        await cacheManager.get(.gamesResponse)
     }
 
-    func cache(games: GamesResponse) async throws {
-        try await cacheManager.save(games, .games, expiry: nil)
+    func games() async throws -> [GameItemResponse] {
+        await cacheManager.array(.games)
+    }
+
+    func cache(gamesResponse: GamesResponse) async throws {
+        try await cacheManager.save(gamesResponse, .gamesResponse, expiry: nil)
+        try await cacheManager.append(gamesResponse.results ?? [], .games)
     }
 }

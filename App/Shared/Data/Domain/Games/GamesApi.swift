@@ -14,14 +14,26 @@ enum GamesApi {
 
 extension GamesApi: MoyaTargetType {
 
+    public var baseURL: URL {
+        switch self {
+        case .games(let request):
+            switch request {
+            case .initial:
+                return URL(string: AppEnvironment.shared.baseUrl)!
+            case .next(let page):
+                return URL(string: page)!
+            }
+        }
+    }
+
     public var path: String {
         switch self {
         case .games(let request):
             switch request {
             case .initial:
                 return "games"
-            case .next(let page):
-                return page
+            case .next:
+                return ""
             }
         }
     }
