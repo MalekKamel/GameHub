@@ -4,11 +4,11 @@ GameHub is your ultimate destination for gaming. With a vast library of games fr
 easily discover, browse, and play your favorite games right from your device. Our user-friendly interface makes it easy
 to find the games you love, and our powerful search tools help you discover new games that you never knew existed.
 
-<img src="https://github.com/ShabanKamell/GameHub/blob/main/blob/screenshpots/1-home_empty.jpeg?raw=true" alt="SwiftUINavigator Demo" width="1000" height="2200"/>
-<img src="https://github.com/ShabanKamell/GameHub/blob/main/blob/screenshpots/2-home.jpeg?raw=true" alt="SwiftUINavigator Demo" width="1000" height="2200"/>
-<img src="https://github.com/ShabanKamell/GameHub/blob/main/blob/screenshpots/3-favorites.jpeg?raw=true" alt="SwiftUINavigator Demo" width="1000" height="2200"/>
-<img src="https://github.com/ShabanKamell/GameHub/blob/main/blob/screenshpots/4-favorites_swipe.jpeg?raw=true" alt="SwiftUINavigator Demo" width="1000" height="2200"/>
-<img src="https://github.com/ShabanKamell/GameHub/blob/main/blob/screenshpots/5-detail.jpeg?raw=true" alt="SwiftUINavigator Demo" width="1000" height="2200"/>
+<img src="https://github.com/ShabanKamell/GameHub/blob/main/blob/screenshpots/1-home_empty.jpeg?raw=true" alt="Image" width="500" height="1500"/>
+<img src="https://github.com/ShabanKamell/GameHub/blob/main/blob/screenshpots/2-home.jpeg?raw=true" alt="Image" width="500" height="1500"/>
+<img src="https://github.com/ShabanKamell/GameHub/blob/main/blob/screenshpots/3-favorites.jpeg?raw=true" alt="Image" width="500" height="1500"/>
+<img src="https://github.com/ShabanKamell/GameHub/blob/main/blob/screenshpots/4-favorites_swipe.jpeg?raw=true" alt="Image" width="500" height="1500"/>
+<img src="https://github.com/ShabanKamell/GameHub/blob/main/blob/screenshpots/5-detail.jpeg?raw=true" alt="Image" width="500" height="1500"/>
 
 # Important Note
 
@@ -52,7 +52,7 @@ the Libs folder from the root directory into the files section of Xcode.
 
 # Architecture
 
-<img src="https://lh3.googleusercontent.com/drive-viewer/AFGJ81p4DmIvlILC6NelzQnBHWldi2tJgpEcnpiME0xp22UhOKM5EU6u_9ByQ_czLQwJ2eswUthakZUQHCLGnGMFAY0Ttxg-XA=s2560" alt="SwiftUINavigator Demo" width="550" height="400"/>
+<img src="https://lh3.googleusercontent.com/drive-viewer/AFGJ81p4DmIvlILC6NelzQnBHWldi2tJgpEcnpiME0xp22UhOKM5EU6u_9ByQ_czLQwJ2eswUthakZUQHCLGnGMFAY0Ttxg-XA=s2560" alt="Image" width="550" height="400"/>
 
 There are a lot of trade-offs to implement the app architecture. But we chose to go with
 [The Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) for the following
@@ -101,7 +101,7 @@ architecture of our app, we invite you to take a look at this project, https://g
 
 ## App Layers
 
-<img src="https://lh3.googleusercontent.com/drive-viewer/AFGJ81oxsttkYzf8NWd4Kf5-iLve7gqOmsRI7dKzH2Qefq3xoEsjedv2fjKiaeqexs7oQLCO9_KULxXMmtwIlbatM3XskmXZjA=s1600" alt="SwiftUINavigator Demo" width="350" height="300"/>
+<img src="https://lh3.googleusercontent.com/drive-viewer/AFGJ81oxsttkYzf8NWd4Kf5-iLve7gqOmsRI7dKzH2Qefq3xoEsjedv2fjKiaeqexs7oQLCO9_KULxXMmtwIlbatM3XskmXZjA=s1600" alt="Image" width="350" height="300"/>
 
 
 The app has a well-designed architecture that follows the principles of separation of concerns, which allows for
