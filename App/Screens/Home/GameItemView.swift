@@ -8,12 +8,16 @@ struct GameItemView: View {
     let item: GameItem
     var canFavorite: Bool = true
     var onUpdateFavorite: ((GameItem) -> Void)? = nil
+    @EnvironmentObject var navigator: Navigator
 
     var body: some View {
         VStack(alignment: .leading) {
             ImageView()
             DescriptionView()
         }
+                .onTapGesture {
+                    showDetailScreen(item: item)
+                }
     }
 
     private func ImageView() -> some View {
@@ -58,4 +62,14 @@ struct GameItemView: View {
                 .opacity(0.9)
                 .shadow(color: AppColor.shadowColor, radius: 0.5, x: 0.3, y: 0.3)
     }
+}
+
+extension GameItemView {
+
+    private func showDetailScreen(item: GameItem) {
+        navigator.navigate {
+            GameDetailScreen.build(game: item)
+        }
+    }
+
 }

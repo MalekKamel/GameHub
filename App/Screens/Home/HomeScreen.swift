@@ -45,23 +45,10 @@ struct HomeScreen: AppScreen {
         GameItemView(item: item) { item in
             updateFavorite(item: item)
         }
-                .onTapGesture {
-                    showDetailScreen(item: item)
-                }
     }
 
     private func ItemsPlaceholderView() -> some View {
         GamesPlaceholderView(description: Strings.doNotGiveUpTheNextGameIsHere)
-    }
-
-}
-
-extension HomeScreen {
-
-    private func showDetailScreen(item: GameItem) {
-        navigator.navigate {
-            GameDetailScreen.build(game: item)
-        }
     }
 
 }

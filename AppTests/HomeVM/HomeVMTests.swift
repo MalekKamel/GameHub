@@ -6,15 +6,15 @@ import XCTest
 @testable import App
 
 class HomeVMTests: XCTestCase {
-    var homeVM: HomeVM!
+    var subject: HomeVM!
 
     override func setUp() {
         super.setUp()
-        homeVM = HomeVM()
+        subject = HomeVM()
     }
 
     override func tearDown() {
-        homeVM = nil
+        subject = nil
         super.tearDown()
     }
 

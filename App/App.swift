@@ -9,7 +9,7 @@ struct AppView: View {
 
     var body: some View {
         NavView(showDefaultNavBar: false) {
-            SplashScreen.build()
+            MainScreen.build()
         }
     }
 
