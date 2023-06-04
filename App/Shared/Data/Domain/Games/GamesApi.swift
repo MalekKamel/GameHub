@@ -63,4 +63,11 @@ extension GamesApi: MoyaTargetType {
             }
         }
     }
+
+    public var sampleData: Data {
+        switch self {
+        case .games:
+            return Fake.shared.gamesResponseJson.data(using: .utf8)!
+        }
+    }
 }

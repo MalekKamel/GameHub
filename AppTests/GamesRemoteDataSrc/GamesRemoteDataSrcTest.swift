@@ -21,4 +21,29 @@ class GamesRemoteDataSrcTest: XCTestCase {
         subject = nil
         super.tearDown()
     }
+
+    func testGames() async throws {
+        // Given
+        let gamesRequest = GamesRequest.initial()
+
+        // When
+        let result = try await subject.games(request: gamesRequest)
+
+        let expectedGamesResponse = GamesResponse(
+                next: "https://api.rawg.io/api/games?key=3be8af6ebf124ffe81d90f514e59856c&page=2&page_size=10",
+                previous: "",
+                results: [],
+                seoTitle: "",
+                seoDescription: "",
+                seoKeywords: "",
+                seoH1: "",
+                noindex: false,
+                nofollow: false,
+                description: "",
+                nofollowCollections: []
+        )
+
+        // Then
+        XCTAssertEqual(result.next, expectedGamesResponse.next)
+    }
 }
