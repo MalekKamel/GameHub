@@ -7,6 +7,7 @@ import XCTest
 
 class GamesRemoteDataSrcMock: GamesRemoteDataSrcContract {
     var shouldThrowError = false
+    var gamesCalled = false
     var gamesResponse = GamesResponse(
             next: "2",
             previous: "",
@@ -25,6 +26,7 @@ class GamesRemoteDataSrcMock: GamesRemoteDataSrcContract {
         if shouldThrowError {
             throw NSError(domain: "", code: 0, userInfo: nil)
         }
+        gamesCalled = true
         return gamesResponse
     }
 }

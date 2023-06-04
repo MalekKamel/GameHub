@@ -9,10 +9,12 @@ class GamesLocalDataSrcMock: GamesLocalDataSrcContract {
     var shouldThrowError = false
     var lastGameResponseValue: GamesResponse?
     var gamesValue: [GameItemResponse] = []
+    var gamesCalled: Bool = false
     var cacheValue: GamesResponse?
     var clearCacheCalled = false
     var updateFavoriteReturnValue = false
     var favoritesValue: [GameItemResponse] = []
+    var updateFavoriteCalled = false
 
     func lastGameResponse() async throws -> GamesResponse? {
         if shouldThrowError {
@@ -25,6 +27,7 @@ class GamesLocalDataSrcMock: GamesLocalDataSrcContract {
         if shouldThrowError {
             throw NSError(domain: "", code: 0, userInfo: nil)
         }
+        gamesCalled = true
         return gamesValue
     }
 
@@ -44,9 +47,17 @@ class GamesLocalDataSrcMock: GamesLocalDataSrcContract {
 
     func updateFavorite(item: GameItemResponse) async throws -> Bool {
         if shouldThrowError {
-            throw NSError(domain: "", code: 0, userInfo: nil)
+            throw NSError(domain: "Mock Error", code: 0, userInfo: nil)
         }
-        return updateFavoriteReturnValue
+        updateFavoriteCalled = true
+        // In the mock implementation, we just check if the item is already in the array of favorite games
+        let isAdded = !favoritesValue.contains(where: { $0.id == item.id })
+        if isAdded {
+            favoritesValue.append(item)
+        } else {
+            favoritesValue.removeAll(where: { $0.id == item.id })
+        }
+        return isAdded
     }
 
     func favorites() async throws -> [GameItemResponse] {

@@ -145,7 +145,6 @@ class GamesLocalDataSrcTest: XCTestCase {
                 genres: [])
         let gameItemResponseArray = [gameItemResponse1, gameItemResponse2]
 
-        // Given
         cacheManager.arrayReturnValue = gameItemResponseArray
 
         runAsyncTest { [self] in
