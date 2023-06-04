@@ -13,8 +13,14 @@ import SwiftUI
 public enum Strings {
   /// GameHub
   public static var appName: String { Strings.tr("Localizable", "app_name") }
+  /// Are you sure you want to delete this item from favorites
+  public static var areYouSureYouWantToDeleteThisItemFromFavorites: String { Strings.tr("Localizable", "are_you_sure_you_want_to_delete_this_item_from_favorites") }
   /// Cancel
   public static var cancel: String { Strings.tr("Localizable", "cancel") }
+  /// Confirm
+  public static var confirm: String { Strings.tr("Localizable", "confirm") }
+  /// Delete Favorite
+  public static var deleteFavorite: String { Strings.tr("Localizable", "delete_favorite") }
   /// Discover Your Next Favorite Game
   public static var discoverYourNextFavoriteGame: String { Strings.tr("Localizable", "discover_your_next_favorite_game") }
   /// Don't give up! The next game is here.

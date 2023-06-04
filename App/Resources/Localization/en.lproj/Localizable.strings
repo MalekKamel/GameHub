@@ -11,3 +11,6 @@
 "you_have_successfully_added_this_item_to_your_list_of_favorites" = "You've successfully added this item to your list of favorites.";
 "you_have_successfully_removed_this_item_from_your_list_of_favorites" = "You've successfully removed this item from your list of favorites.";
 "your_favorites_list_is_empty_at_the_moment" = "Your favorites list is empty at the moment.";
+"confirm" = "Confirm";
+"delete_favorite" = "Delete Favorite";
+"are_you_sure_you_want_to_delete_this_item_from_favorites" = "Are you sure you want to delete this item from favorites";

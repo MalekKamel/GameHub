@@ -28,7 +28,7 @@ struct FavoritesScreen: AppScreen {
             ForEach(vm.games) { item in
                 ItemView(item: item)
             }
-                    .onDelete(perform: delete)
+                    .onDelete(perform: confirmDelete)
         }
                 .listStyle(.plain)
     }
@@ -44,6 +44,20 @@ struct FavoritesScreen: AppScreen {
 }
 
 extension FavoritesScreen {
+
+    private func confirmDelete(at offsets: IndexSet) {
+        navigator.presentAlert {
+            ConfirmAlert.create(
+                    title: Strings.deleteFavorite,
+                    message: Strings.areYouSureYouWantToDeleteThisItemFromFavorites
+            ) { confirm in
+                guard confirm else {
+                    return
+                }
+                delete(at: offsets)
+            }
+        }
+    }
 
     func delete(at offsets: IndexSet) {
         guard let index = offsets.first else {
