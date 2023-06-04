@@ -138,9 +138,9 @@ class HomeVMTests: XCTestCase {
         var added = true
         // When
         homeVM.updateFavorite(item: item) { isAdded in
-            // Then
             added = isAdded
         }
+        // Then
         runAsyncTest {
             XCTAssertFalse(added)
         }
